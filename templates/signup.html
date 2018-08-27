@@ -1,0 +1,20 @@
+{% include "header.html" %}
+    <div class="jumbotron">
+        <h1><b>Регистрация</b></h1>
+        <form class="form-signin">
+            <label for="inputName" class="sr-only">Name</label>
+            <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Имя" required
+                   autofocus>
+
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email адрес"
+                   required autofocus>
+
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Пароль"
+                   required>
+
+            <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Зарегистрироваться</button>
+        </form>
+    </div>
+{% include "footer.html" %}

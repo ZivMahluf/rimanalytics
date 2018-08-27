@@ -1,0 +1,1186 @@
+<head>
+    <style>
+
+.Approach { grid-area: Approach; }
+.Contents { grid-area: Contents; }
+.SpecialScores { grid-area: SpecialScores; }
+.locFeat { grid-area: locFeat; }
+.locFeatDQ { grid-area: locFeatDQ; }
+.determinantsBlends { grid-area:determinantsBlends;}
+.determinantsSingle { grid-area:determinantsSingle;}
+.FQ{grid-area:FQ;}
+.core{grid-area:core}
+.affect{grid-area:affect}
+
+.interpersonal{grid-area:interpersonal}
+.ideation{grid-area:ideation}
+.mediation{grid-area:mediation}
+.processing{grid-area:processing}
+.selfPerception{grid-area:selfPerception}
+
+.StructuralSummary {
+  display: grid;
+  grid-template-areas:
+    'locFeat determinantsBlends determinantsSingle Contents FQ core'
+    'locFeatDQ  determinantsBlends determinantsSingle Contents SpecialScores core'
+     'affect Approach determinantsSingle Contents SpecialScores core'
+    'affect Approach determinantsSingle Contents SpecialScores core'
+    'ideation processing  mediation  selfPerception interpersonal core';
+
+  grid-template-columns: 18% 15% 13% 13% 22% 13%;
+  grid-gap: 10px;
+  background-color: #babeff;
+  padding: 10px;
+}
+.StructuralSummary > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+  padding: 2px 0;
+  font-family: Calibri;
+  font-size: 18px;
+}
+
+.Constellations {
+  display: grid;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  grid-template-columns: 35% 35%;
+  background-color: #babeff;
+  padding: 10px;
+}
+.Constellations-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-family: Calibri;
+  font-size: 18px;
+  text-align: left;
+}
+
+.InterpretiveReport {
+  display: grid;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  grid-template-columns: 71.2%;
+  background-color: #babeff;
+  padding: 10px;
+}
+.InterpretiveReport-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-family: Calibri;
+  font-size: 18px;
+  text-align: left;
+}
+
+
+table {
+    border-collapse: separate;
+
+}
+
+td {
+    padding: 0px;
+    padding-right: 20px;
+    border: 1px solid lightgray;
+}
+
+th {
+    padding: 1px;
+}
+
+caption {
+    margin-bottom: 10px;
+    font-family: Calibri;
+    font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+<div class="StructuralSummary">
+    <div class="Approach">
+
+        <table>
+            <caption>Approach Summary</caption>
+            {% for KEY,VAL in CNTNR_SS["approachSummary"].items() %}
+            <tr>
+                <td>{{ KEY }}</td>
+                <td>{{ VAL }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="Contents">
+        <table>
+            <caption>Contents</caption>
+            {% for KEY, VAL in CNTNR_SS["contents"].items() %}
+            <tr>
+                <td>{{KEY}}</td>
+                <td>{{VAL}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="locFeat">
+        <table>
+            <caption>Location Features</caption>
+            {% for KEY, VAL in CNTNR_SS["locFeat"].items() %}
+            <tr>
+                <td>{{KEY}}</td>
+                <td>{{VAL}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="locFeatDQ">
+        <table>
+            <caption>DQ</caption>
+            {% for KEY, VAL in CNTNR_SS["locFeatDQ"].items() %}
+            <tr>
+                <td>{{KEY}}</td>
+                <td>{{VAL}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="determinantsBlends">
+
+        <table>
+            <caption>Determinants</caption>
+        </table>
+        <table>
+            <tr>
+                <td>Blends</td>
+            </tr>
+
+            {% for VAL in CNTNR_SS["determinants"]["Blends"]%}
+            <tr>
+                <td>
+                    {{VAL}}
+                </td>
+
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+    <div class="determinantsSingle">
+
+        <table>
+            <caption>Determinants</caption>
+        </table>
+        <table>
+            <tr>
+                <td>Single</td>
+            </tr>
+            {% for key,val in CNTNR_SS["determinants"]["Single"].items()%}
+
+            <tr>
+                <td>
+                    {{key}}
+                </td>
+                <td>
+                    {{val}}
+                </td>
+
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+
+    <div class="FQ">
+        <table>
+            <caption> Form Quality</caption>
+
+            <tr>
+                <td></td>
+                <td>FQx</td>
+                <td>MQual</td>
+                <td>W+D</td>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td>{{CNTNR_SS["FQ"]["FQx"]["+"]}}</td>
+                <td>{{CNTNR_SS["FQ"]["MQual"]["+"]}}</td>
+                <td>{{CNTNR_SS["FQ"]["W+D"]["+"]}}</td>
+            </tr>
+            <tr>
+                <td>o</td>
+                <td>{{CNTNR_SS["FQ"]["FQx"]["o"]}}</td>
+                <td>{{CNTNR_SS["FQ"]["MQual"]["o"]}}</td>
+                <td>{{CNTNR_SS["FQ"]["W+D"]["o"]}}</td>
+            </tr>
+            <tr>
+                <td>u</td>
+                <td>{{CNTNR_SS["FQ"]["FQx"]["u"]}}</td>
+                <td>{{CNTNR_SS["FQ"]["MQual"]["u"]}}</td>
+                <td>{{CNTNR_SS["FQ"]["W+D"]["u"]}}</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>{{CNTNR_SS["FQ"]["FQx"]["-"]}}</td>
+                <td>{{CNTNR_SS["FQ"]["MQual"]["-"]}}</td>
+                <td>{{CNTNR_SS["FQ"]["W+D"]["-"]}}</td>
+            </tr>
+            <tr>
+                <td>none</td>
+                <td>{{CNTNR_SS["FQ"]["FQx"]["none"]}}</td>
+                <td>{{CNTNR_SS["FQ"]["MQual"]["none"]}}</td>
+                <td>{{CNTNR_SS["FQ"]["W+D"]["none"]}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="SpecialScores">
+        <table>
+            <caption>SPECIAL SCORES</caption>
+            <tr>
+                <td></td>
+                <td>Lv1</td>
+                <td>Lv2</td>
+            </tr>
+            <tr>
+                <td>DV</td>
+                <td>{{CNTNR_SS["specialScores"]["lvl1"]["DV"]}} (x1)</td>
+                <td>{{CNTNR_SS["specialScores"]["lvl2"]["DV"]}} (x2)</td>
+            </tr>
+            <tr>
+                <td>INC</td>
+                <td>{{CNTNR_SS["specialScores"]["lvl1"]["INC"]}} (x2)</td>
+                <td>{{CNTNR_SS["specialScores"]["lvl2"]["INC"]}} (x4)</td>
+            </tr>
+            <tr>
+                <td>DR</td>
+                <td>{{CNTNR_SS["specialScores"]["lvl1"]["DR"]}} (x3)</td>
+                <td>{{CNTNR_SS["specialScores"]["lvl2"]["DR"]}} (x6)</td>
+            </tr>
+            <tr>
+                <td>FAB</td>
+                <td>{{CNTNR_SS["specialScores"]["lvl1"]["FAB"]}} (x4)</td>
+                <td>{{CNTNR_SS["specialScores"]["lvl2"]["FAB"]}} (x7)</td>
+            </tr>
+            <tr>
+                <td>ALOG</td>
+                <td>{{CNTNR_SS["specialScores"]["lvl1"]["ALOG"]}} (x5)</td>
+            </tr>
+            <tr>
+                <td>CON</td>
+                <td>{{CNTNR_SS["specialScores"]["lvl1"]["CON"]}} (x7)</td>
+            </tr>
+            <tr>
+                <td>Raw Sum6</td>
+                <td>{{CNTNR_SS["specialScores"]["misc"]["SUM6"]}}</td>
+            </tr>
+            <tr>
+                <td>WSum6</td>
+                <td>{{CNTNR_SS["specialScores"]["misc"]["WSUM6"]}}</td>
+            </tr>
+
+            <tr>
+                <td>AB</td>
+                <td>{{CNTNR_SS["specialScores"]["misc"]["AB"]}}</td>
+                <td>GHR</td>
+                <td>{{CNTNR_SS["specialScores"]["misc"]["GHR"]}}</td>
+            </tr>
+            <tr>
+                <td>AG</td>
+                <td>{{CNTNR_SS["specialScores"]["misc"]["AG"]}}</td>
+                <td>PHR</td>
+                <td>{{CNTNR_SS["specialScores"]["misc"]["PHR"]}}</td>
+            </tr>
+            <tr>
+                <td>COP</td>
+                <td>{{CNTNR_SS["specialScores"]["misc"]["COP"]}}</td>
+                <td>MOR</td>
+                <td>{{CNTNR_SS["specialScores"]["misc"]["MOR"]}}</td>
+            </tr>
+            <tr>
+                <td>CP</td>
+                <td>{{CNTNR_SS["specialScores"]["misc"]["CP"]}}</td>
+                <td>PER</td>
+                <td>{{CNTNR_SS["specialScores"]["misc"]["PER"]}}</td>
+            </tr>
+            <tr>
+                <td>PSV</td>
+                <td>{{CNTNR_SS["specialScores"]["misc"]["PSV"]}}</td>
+
+            </tr>
+
+        </table>
+    </div>
+    <div class="core">
+        <table>
+            <caption>Core Section</caption>
+            {%for key,val in CNTNR_SS["core"].items()%}
+
+            {%if (key == "EB" or key == "eb")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val[0]}} : {{val[1]}}</td>
+            </tr>
+            {%endif%}
+
+            {%if (key != "EB" and key != "eb")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val}}</td>
+            </tr>
+            {%endif%}
+            {%endfor%}
+        </table>
+    </div>
+    <div class=affect>
+        <table>
+            <caption>Affect</caption>
+            {%for key,val in CNTNR_SS["affect"].items()%}
+
+            {%if (key == "FC:CF+C" or key == "SumC':WSumC" or key == "Blends:R")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val[0]}} : {{val[1]}}</td>
+            </tr>
+            {%endif%}
+
+            {%if (key != "FC:CF+C" and key != "SumC':WSumC" and key != "Blends:R")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val}}</td>
+            </tr>
+            {%endif%}
+            {%endfor%}
+        </table>
+    </div>
+    <div class="interpersonal">
+        <table>
+            <caption>Interpersonal</caption>
+
+            {%for key,val in CNTNR_SS["interpersonal"].items()%}
+
+            {%if (key == "GHR:PHR" or key == "a:p")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val[0]}} : {{val[1]}}</td>
+            </tr>
+            {%endif%}
+
+            {%if (key != "GHR:PHR" and key != "a:p")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val}}</td>
+            </tr>
+            {%endif%}
+            {%endfor%}
+        </table>
+    </div>
+
+    <div class="ideation">
+        <table>
+            <caption>Ideation</caption>
+
+            {%for key,val in CNTNR_SS["ideation"].items()%}
+
+            {%if (key == "Ma:Mp" or key == "a:p")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val[0]}} : {{val[1]}}</td>
+            </tr>
+            {%endif%}
+
+            {%if (key != "Ma:Mp" and key != "a:p")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val}}</td>
+            </tr>
+            {%endif%}
+            {%endfor%}
+        </table>
+    </div>
+
+    <div class="mediation">
+        <table>
+            <caption>Mediation</caption>
+
+            {%for key,val in CNTNR_SS["mediation"].items()%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+
+    <div class="processing">
+        <table>
+            <caption>Processing</caption>
+
+            {%for key,val in CNTNR_SS["processing"].items()%}
+
+            {%if (key == "W:D:Dd")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val[0]}} : {{val[1]}} : {{val[2]}}</td>
+            </tr>
+            {%endif%}
+
+            {%if (key == "W:M")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val[0]}} : {{val[1]}}</td>
+            </tr>
+            {%endif%}
+
+            {%if (key != "W:D:Dd" and key != "W:M")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val}}</td>
+            </tr>
+            {%endif%}
+            {%endfor%}
+        </table>
+    </div>
+
+    <div class="selfPerception">
+        <table>
+            <caption>Self Perception</caption>
+
+            {%for key,val in CNTNR_SS['selfPerception'].items()%}
+            {%if (key == "H:(H)+Hd+(Hd)")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val[0]}} : {{val[1]}}</td>
+            </tr>
+            {%endif%}
+
+            {%if (key != "H:(H)+Hd+(Hd)")%}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{val}}</td>
+            </tr>
+            {%endif%}
+            {%endfor%}
+        </table>
+    </div>
+</div>
+
+
+<div class="Constellations">
+
+    <div class="Constellations-item">
+        <table>
+            <caption>SCON</caption>
+            <td>
+                {% if (CNTNR_C["POS_SCON"]) %}
+                &#x2611;
+                {% endif %}
+                {% if not (CNTNR_C["POS_SCON"]) %}
+                &#x2610;
+                {% endif %}Положителен, если 8 или более пунктов являются истинными
+                Применимо только к клиентам старше 14ти лет.
+            </td>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["SCON"][0]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["SCON"][0]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>FV+VF+V+FD ({{CNTNR_C["FV+VF+V+FD"]}}) > 2</td>
+            </tr>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["SCON"][1]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["SCON"][1]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>Col-Shd Blends ({{CNTNR_C["Col-Shd"]}}) > 0</td>
+            </tr>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["SCON"][2]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["SCON"][2]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>Ego({{CNTNR_SS["selfPerception"]["3r+(2)/R"]}}) < .31 или Ego > .44</td>
+            </tr>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["SCON"][3]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["SCON"][3]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>MOR({{CNTNR_SS["specialScores"]["misc"]["MOR"]}}) > 3</td>
+            </tr>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["SCON"][4]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["SCON"][4]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>Zd({{CNTNR_SS["processing"]["Zd"]}}) > &plusmn; 3.5</td>
+            </tr>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["SCON"][5]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["SCON"][5]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>es({{CNTNR_SS["core"]["es"]}}) > EA({{CNTNR_SS["core"]["EA"]}})</td>
+            </tr>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["SCON"][6]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["SCON"][6]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>CF + C({{CNTNR_SS["affect"]["FC:CF+C"][1]}}) > FC ({{CNTNR_SS["affect"]["FC:CF+C"][0]}})</td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["SCON"][7]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["SCON"][7]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>>X+%({{CNTNR_SS["mediation"]["X+%"]}}) < .70</td>
+            </tr>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["SCON"][8]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["SCON"][8]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>S({{CNTNR_SS["locFeat"]["S"]}}) > 3</td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["SCON"][9]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["SCON"][9]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>P({{CNTNR_SS["mediation"]["P"]}}) < 3 или > 8</td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["SCON"][10]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["SCON"][10]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td> Pure H({{CNTNR_SS["interpersonal"]["pureH"]}}) < 2</td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["SCON"][11]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["SCON"][11]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td> R({{CNTNR_SS["core"]["R"]}}) < 17</td>
+            </tr>
+            <tr>
+                <td>{{CNTNR_C["SUM_SCON"]}}</td>
+                <td>Total</td>
+            </tr>
+        </table>
+    </div>
+    <div class="Constellations-item">
+        <table>
+            <caption>PTI</caption>
+            <tr>
+                <td>{% if (CNTNR_C["PTI"][0]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["PTI"][0]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(XA%({{CNTNR_SS["mediation"]["XA%"]}})<0.70) и (WDA%({{CNTNR_SS["mediation"]["WDA%"]}})]<0.75)
+                </td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["PTI"][1]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["PTI"][1]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>X-%({{CNTNR_SS["mediation"]["X-%"]}})>0.29</td>
+            </tr>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["PTI"][2]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["PTI"][2]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(Sum Level 2 Special Scores({{CNTNR_SS["ideation"]["lvl2"]}}) > 2) и
+                    (FAB2({{CNTNR_SS["specialScores"]["lvl2"]["FAB"]}}) > 0)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["PTI"][3]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["PTI"][3]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>((R({{CNTNR_SS["core"]["R"]}})<17) и (WSum6({{CNTNR_SS["ideation"]["WSUM6"]}}) > 12))
+                    или ((R({{CNTNR_SS["core"]["R"]}}) > 16) и (WSum6({{CNTNR_SS["ideation"]["WSUM6"]}}) > 17))
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["PTI"][4]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["PTI"][4]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(M-({{CNTNR_SS["ideation"]["M-"]}})> 1) или (X-%({{CNTNR_SS["mediation"]["X-%"]}}) > 0.40)</td>
+            </tr>
+            <tr>
+                <td>{{CNTNR_C["SUM_PTI"]}}</td>
+                <td>Total</td>
+            </tr>
+        </table>
+    </div>
+    <div class="Constellations-item">
+        <table>
+            <caption>DEPI</caption>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["POS_DEPI"]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["POS_DEPI"]) %}
+                    &#x2610;
+                    {% endif %}Положителен, если 5 или более пунктов являются истинными:
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["DEPI"][0]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["DEPI"][0]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(FV+VF+V({{CNTNR_C["FV+VF+V"]}})>0) или (FD({{CNTNR_C["FD"]}})>2)</td>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["DEPI"][1]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["DEPI"][1]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(Col-Shd Blends({{CNTNR_C["Col-Shd"]}})>0) или (S({{CNTNR_SS["locFeat"]["S"]}})>2)</td>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["DEPI"][2]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["DEPI"][2]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>
+                    (3r+(2)/R({{CNTNR_SS["selfPerception"]["3r+(2)/R"]}})>0.44иFr+rF({{CNTNR_SS["selfPerception"]["Fr+rF"]}})=0)
+                    или
+                    (3r+(2)/R({{CNTNR_SS["selfPerception"]["3r+(2)/R"]}})<0.33)
+                </td>
+            <tr>
+                <td> {% if (CNTNR_C["DEPI"][3]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["DEPI"][3]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(Afr({{CNTNR_SS["affect"]["Afr"]}}) < 0.46) или (Blends({{CNTNR_C["SUM_Blends"]}}) < 4)</td>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["DEPI"][4]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["DEPI"][4]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(SumShading({{CNTNR_SS["core"]["eb"][1]}}) > FM + m({{(CNTNR_SS["core"]["FM"] +
+                    CNTNR_SS["core"]["m"])}}))или
+                    (SumC" ({{CNTNR_SS["affect"]["SumC':WSumC"][0]}}) > 2)
+                </td>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["DEPI"][5]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["DEPI"][5]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(MOR({{CNTNR_SS["specialScores"]["misc"]["MOR"]}}) > 2) или (INTELL)(2xAB + Art +
+                    Ay({{CNTNR_SS["ideation"]["INTELL"]}}) > 3)
+                </td>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["DEPI"][6]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["DEPI"][6]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(COP({{CNTNR_SS["specialScores"]["misc"]["COP"]}}) < 2) или ([Bt + 2xCl + Ge + Ls + 2xNa] /
+                    R({{CNTNR_SS["interpersonal"]["isol"]}}) > 0.24)
+                </td>
+            </tr>
+            <tr>
+                <td>{{CNTNR_C["SUM_DEPI"]}}</td>
+                <td>Total</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="Constellations-item">
+        <table>
+            <caption>CDI</caption>
+            <tr>
+                <td>{% if (CNTNR_C["POS_CDI"]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["POS_CDI"]) %}
+                    &#x2610;
+                    {% endif %}Положителен, если 4 или более пунктов являются истинными:
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["CDI"][0]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["CDI"][0]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(EA({{(CNTNR_SS["core"]["EA"])}}) < 6) или (AdjD({{CNTNR_SS["core"]["adjD"]}}) < 0)</td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["CDI"][1]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["CDI"][1]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(COP({{CNTNR_SS["specialScores"]["misc"]["COP"]}}) < 2) и
+                    (AG({{CNTNR_SS["specialScores"]["misc"]["AG"]}}) < 2)
+                </td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["CDI"][2]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["CDI"][2]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(Weighted SumC({{CNTNR_SS["affect"]["SumC':WSumC"][1]}}) < 2.5)
+                    или (Afr({{CNTNR_SS["affect"]["Afr"]}}) < 0.46)
+                </td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["CDI"][3]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["CDI"][3]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>((Passive({{CNTNR_SS["ideation"]["a:p"][1]}}) > Active + 1({{CNTNR_SS["ideation"]["a:p"][0]}}))
+                    или (PureH({{CNTNR_SS["interpersonal"]["pureH"]}}) < 2)
+                </td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["CDI"][4]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["CDI"][4]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>((SumT({{CNTNR_SS["interpersonal"]["SumT"]}}) > 1)или
+                    (Isolate / R({{CNTNR_SS["interpersonal"]["isol"]}}) > 0.24)или
+                    (Food({{CNTNR_SS["interpersonal"]["Food"]}}) > 0)
+                </td>
+            </tr>
+            <tr>
+                <td>{{CNTNR_C["SUM_CDI"]}}</td>
+                <td> Total</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="Constellations-item">
+        <table>
+            <caption>HVI</caption>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["POS_HVI"]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["POS_HVI"]) %}
+                    &#x2610;
+                    {% endif %}
+                    Положителен, если 1й и как минимум 4 остальных пункта являются истинными:
+                </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td>{% if (CNTNR_C["HVI"][0]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["HVI"][0]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(1)FT + TF + T({{CNTNR_C["FT+TF+T"]}}) = 0</td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["HVI"][1]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["HVI"][1]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(2)Zf({{CNTNR_SS['locFeat']['Zf']}}) > 12</td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["HVI"][2]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["HVI"][2]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(3)Zd({{CNTNR_SS["processing"]["Zd"]}}) > +3.5</td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["HVI"][3]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["HVI"][3]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(4)S({{CNTNR_SS["locFeat"]["S"]}}) > 3</td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["HVI"][4]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["HVI"][4]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(5)H + (H) + Hd + (Hd)({{CNTNR_SS["interpersonal"]["H"]}}) > 6</td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["HVI"][5]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["HVI"][5]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(6)(H) + (A) + (Hd) + (Ad)({{((CNTNR_SS["contents"]["(H)"] +
+                    CNTNR_SS["contents"]["(A)"] +
+                    CNTNR_SS["contents"]["(Hd)"] +
+                    CNTNR_SS["contents"]["(Ad)"]))}}) > 3
+                </td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["HVI"][6]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["HVI"][6]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(7)H + A: Hd + Ad({{ CNTNR_SS['contents']['H'] + CNTNR_SS['contents']['A']+
+                    CNTNR_SS['contents']['(H)'] + CNTNR_SS['contents']['(A)']}}:{{CNTNR_SS['contents']['Hd'] +
+                    CNTNR_SS['contents']['Ad'] +
+                    CNTNR_SS['contents']['(Hd)'] + CNTNR_SS['contents']['(Ad)']}}) < 4: 1
+                </td>
+            </tr>
+            <tr>
+                <td>{% if (CNTNR_C["HVI"][7]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["HVI"][7]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(8)Cg({{CNTNR_SS['contents']['Cg']}}) > 3</td>
+            </tr>
+        </table>
+    </div>
+    <div class="Constellations-item">
+        <table>
+            <caption> OBS</caption>
+            <tr>
+                <td>{% if (CNTNR_C["OBS"][0]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["OBS"][0]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(1)Dd({{CNTNR_SS['locFeat']['Dd']}})>3</td>
+            <tr>
+            <tr>
+                <td>{% if (CNTNR_C["OBS"][1]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["OBS"][1]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(2)Zf({{CNTNR_SS['locFeat']['Zf']}})>12</td>
+            <tr>
+            <tr>
+                <td>{% if (CNTNR_C["OBS"][2]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["OBS"][2]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(3)Zd({{CNTNR_SS['processing']['Zd']}})>+3.0</td>
+            <tr>
+            <tr>
+                <td>{% if (CNTNR_C["OBS"][3]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["OBS"][3]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(4)Populars({{CNTNR_SS['mediation']['P']}})>7</td>
+            <tr>
+            <tr>
+                <td>{% if (CNTNR_C["OBS"][4]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["OBS"][4]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>(5)FQ +({{CNTNR_SS['FQ']['FQx']['+']}})>1</td>
+            <tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    {% if (CNTNR_C["POS_OBS"][4]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["POS_OBS"][4]) %}
+                    &#x2610;
+                    {% endif %}
+                    Положителен, если более одного пункта являются истинными:
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>{% if (CNTNR_C["OBS"][5]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["OBS"][5]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>Пункт с 1го по 5й все являются истинными</td>
+            <tr>
+            <tr>
+                <td>{% if (CNTNR_C["OBS"][6]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["OBS"][6]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>Два или более пункта с 1го по 4й являются истинными и FQ+{{CNTNR_SS['FQ']['FQx']['+']}} > 3</td>
+            <tr>
+            <tr>
+                <td>{% if (CNTNR_C["OBS"][7]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["OBS"][7]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>3 или moreof 1 to 5 are true и X+%({{CNTNR_SS['mediation']['X+%']}})>0.89</td>
+            <tr>
+            <tr>
+                <td>{% if (CNTNR_C["OBS"][8]) %}
+                    &#x2611;
+                    {% endif %}
+                    {% if not (CNTNR_C["OBS"][8]) %}
+                    &#x2610;
+                    {% endif %}
+                </td>
+                <td>FQ+({{CNTNR_SS['FQ']['FQx']['+']}})>3 и X+%({{CNTNR_SS['mediation']['X+%']}})>0.89</td>
+            <tr>
+        </table>
+    </div>
+</div>
+
+
+<div class="InterpretiveReport">
+    <div class="InterpretiveReport-item">
+        <table>
+            <caption align="center">Интерпритационный отчет</caption>
+            {%if CNTNR_IR["SCON"] != ''%}
+            <tr>
+                <td>
+                    <b style="color: red">{{CNTNR_IR["SCON"]}}</b>
+                </td>
+            </tr>
+            {%endif%}
+            <tr>
+                <td>
+                    {{CNTNR_IR["validity"]}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Исходя из анализа ключевых переменных, была выбрана следующая стратегия интерпретации по кластерам:
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                {%for VAR in CNTNR_IR["strategy"]%}
+                <td>
+                    {{VAR}}
+                </td>
+                {%endfor%}
+            </tr>
+        </table>
+    </div>
+    <!--
+
+     Loop 1. Iteratively create each cluster table
+            Manually get the cluster name
+     Loop 2(Nested). Iterate over "numerical" variables
+     Loop 3(Nested). Iterate over "text"
+
+     -->
+    {%for cluster in CNTNR_IR["clusters"]%}
+    <div class="InterpretiveReport-item">
+        <tr>
+            <td>{{cluster["text"][0]}}</td>
+        </tr>
+        <table>
+
+            {%for num in cluster["numerical"]%}
+            <tr>
+                {%for VAR in num%}
+
+                <td>
+                    {% if (VAR is iterable and VAR is not string)%}
+                        {%for key in VAR%}
+                            {{key}}
+                            {{ ":" if not loop.last }}
+                        {%endfor%}
+                    {% else%}
+                    {{VAR}}
+                    {%endif%}
+                </td>
+                {%endfor%}
+            </tr>
+            {%endfor%}
+
+        </table>
+        <table>
+            {%for VAR in cluster["text"][1:]%}
+
+            <tr>
+                <td>
+                    {{VAR}}
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+    {%endfor%}
+</div>
+
+</body>
+</html>

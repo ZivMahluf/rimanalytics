@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Python Flask Bucket List App</title>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/css/signup.css" rel="stylesheet">
+
+    <script src="../static/jquery-3.3.1.min.js"></script>
+
+    <script data-jsfiddle="common" src="../static/js/handsontable.full.js"></script>
+    <link data-jsfiddle="common" rel="stylesheet" media="screen" href="../static/css/handsontable.full.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="/logout">Logout</a>
+                </li>
+            </ul>
+        </nav>
+        <h3 class="text-muted"><i>Роршах</i></h3>
+    </div>
+
+    <body class="home">
+    <div class="wrapper">
+        <div class="wrapper-row">
+            <div id="global-menu-clone">
+
+                <div id="container">
+                    <div class="columnLayout">
+
+                        <div class="rowLayout">
+                            <div class="descLayout">
+                                <div class="pad" data-jsfiddle="example">
+                                    <div id="example"></div>
+                                </div>
+                            </div>
+                            <div class="codeLayout">
+                                <script type=text/javascript>
+                                    var
+
+                                        data = [
+
+                                            ['', '', '', '', '', '', '', '', '', ''],
+                                            ['', '', '', '', '', '', '', '', '', ''],
+                                            ['', '', '', '', '', '', '', '', '', ''],
+                                            ['', '', '', '', '', '', '', '', '', ''],
+                                            ['', '', '', '', '', '', '', '', '', ''],
+                                            ['', '', '', '', '', '', '', '', '', ''],
+                                            ['', '', '', '', '', '', '', '', '', ''],
+                                            ['', '', '', '', '', '', '', '', '', ''],
+                                            ['', '', '', '', '', '', '', '', '', ''],
+                                            ['', '', '', '', '', '', '', '', '', ''],
+
+
+                                        ],
+                                        resp =
+                                            container = document.getElementById('example'),
+                                        hot = new Handsontable(container, {
+                                            data: data,
+                                            minSpareRows: 1,
+                                            colHeaders: ['Card', 'Resp.#', 'Location & DQ', 'Loc.#', 'Determinants & FQ', '2', 'Contents', 'Pop', 'Z-score', 'Spec.Score'],
+                                            contextMenu: true
+                                        });
+
+                                    function resp(response) {
+                                        document.write(response)
+                                        return response.json()
+                                    }
+
+                                    function handleSubmit(opts) {
+                                        fetch('http://localhost:5000/userHome/data',
+                                            {
+                                                method: 'post',
+                                                body: JSON.stringify(this.data)
+                                            }).then(resp(response))
+
+                                    }
+                                    function ajaxLoad()
+                                    {
+                                        $("#result").load("http://127.0.0.1:5000/result");
+                                    }
+
+
+                                </script>
+                            </div>
+                            <br>
+                            <button onclick="handleSubmit()" class="btn btn-lg btn-primary ">Submit</button>
+
+                            <p>
+                                <button onclick="ajaxLoad()" class="btn btn-lg btn-primary ">Load</button>
+                                <span id=result></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+{% include "footer.html" %}
