@@ -72,7 +72,7 @@
                                     }
 
                                     function handleSubmit(opts) {
-                                        fetch('http://localhost:5000/userHome/data',
+                                        fetch('/userHome/data',
                                             {
                                                 method: 'post',
                                                 body: JSON.stringify(this.data)
@@ -81,7 +81,7 @@
                                     }
                                     function ajaxLoad()
                                     {
-                                        $("#result").load("http://127.0.0.1:5000/result");
+                                        $("#result").load("/result");
                                     }
 
 
