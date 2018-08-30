@@ -104,9 +104,11 @@ def userHome():
 
 @app.route('/userHome/data', methods=['GET', 'POST'])
 def getData():
-    Main.main(inputFormat.format(json.loads(request.data)))
-    return json.dumps((123)), 200, {'ContentType': 'application/json'}
-
+    try:
+        Main.main(inputFormat.format(json.loads(request.data)))
+        return json.dumps((123)), 200, {'ContentType': 'application/json'}
+    except Exception as e:
+        return render_template('error.html', error=e)
 
 @app.route('/result', methods=['GET', 'POST'])
 def result():
@@ -131,6 +133,15 @@ def result():
 def logout():
     session.pop('user',None)
     return redirect('/')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/guide')
+def guide():
+    return render_template('guide.html')
+
 
 if __name__ == '__main__':
     app.run()
