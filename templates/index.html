@@ -1,5 +1,5 @@
 {% include "header.html" %}
-
+<!--
 <div class="jumbotron">
     <h3><b>Приложение для подсчета, анализа и интерпретации психометрических данных</b></h3>
     <h2><b>Метода Чернильных Пятен Роршаха</b></h2>
@@ -7,6 +7,44 @@
     <p><a class="btn btn-lg btn-success" href="showLogIn" role="button">Войти в личный кабинет</a>
     </p>
 </div>
+-->
+
+<div id="carousel" class="carousel slide">
+    <o1 class="carousel-indicators">
+        <li class="active" data-target="#carousel" data-slide-to="0"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+    </o1>
+
+
+    <div class="carousel-inner">
+
+        <div class="item active">
+            <img src="/static/img/img2.png" alt="">
+            <div class="carousel-caption">
+                <h3>Первый</h3>
+                <p>Слайд</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="/static/img/img.png" alt="">
+            <div class="carousel-caption">
+                <h3>Второй</h3>
+                <p>Слайд</p>
+
+            </div>
+        </div>
+
+    </div>
+    <a href="#carousel" class="left carousel-control" data-slide="prev">
+        <span></span>
+    </a>
+
+    <a href="#carousel" class="right carousel-control" data-slide="next">
+        <span></span>
+    </a>
+</div>
+
 
 <div class="row marketing">
     <div class="col-lg-6">
@@ -24,5 +62,6 @@
                     href="mailto:gabdulkhakov_a@auca.kg">gabdulkhakov_a@auca.kg</a></p>
 
     </div>
+</div>
 </div>
 {% include "footer.html" %}
