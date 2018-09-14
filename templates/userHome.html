@@ -76,11 +76,11 @@
                                             {
                                                 method: 'post',
                                                 body: JSON.stringify(this.data)
-                                            }).then(resp(response))
+                                            }).then(ajaxLoad())
 
                                     }
-                                    function ajaxLoad()
-                                    {
+
+                                    function ajaxLoad() {
                                         $("#result").load("/result");
                                     }
 
@@ -88,10 +88,9 @@
                                 </script>
                             </div>
                             <br>
-                            <button onclick="handleSubmit()" class="btn btn-lg btn-primary ">Submit</button>
+                            <button onclick="handleSubmit()" class="btn btn-lg btn-primary ">Анализировать</button>
 
                             <p>
-                                <button onclick="ajaxLoad()" class="btn btn-lg btn-primary ">Load</button>
                                 <span id=result></span>
                         </div>
                     </div>
