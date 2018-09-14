@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Python Flask App</title>
+
+
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/jumbotron-narrow.css" rel="stylesheet">
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+
+    <script data-jsfiddle="common" src="../static/js/handsontable.full.js"></script>
+    <link data-jsfiddle="common" rel="stylesheet" media="screen" href="../static/css/handsontable.full.css">
+
+</head>
+
+<body>
+<div class="container">
+    <div class="header">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation"><a href="/">Главная</a></li>
+                <li role="presentation"><a href="/showLogIn">Логин</a></li>
+                <li role="presentation"><a href="/guide">Инструкция</a></li>
+                <li role="presentation"><a href="/about">О проекте</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted"><i>RIM Analytics</i></h3>
+    </div>
+
+    <div class="row marketing">
+        <div class="col-lg-8">
+
+            <p style="font-size: 20px" class="text-justify text-muted">
+                You can try the functionality for the pre-entered data here.
+                The data entered in the table below, is being sent to the server
+                for analyses after you press the button below.<br>
+
+                The backend extracts 148 features from the user data and calculates
+                the crucial metrics for further machine analyses on the probability
+                of being predisposed to certain mental and emotional deviations.
+                The returned protocol in Russian is fully machine generated, and
+                thus might containg some minor linguistic and grammar errors.
+            </p>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+
+
+    <div class="home">
+        <div class="wrapper">
+            <div class="wrapper-row">
+
+                <div id="global-menu-clone">
+
+                    <div id="container">
+                        <div class="columnLayout">
+
+                            <div class="rowLayout">
+
+                                <div class="descLayout">
+
+                                    <div class="pad" data-jsfiddle="example">
+
+                                        <div id="example"></div>
+                                    </div>
+                                </div>
+
+                                <div class="codeLayout">
+                                    <script type=text/javascript>
+                                        var
+
+                                            data = [
+
+                                                ['I', '1', 'Wso', '1', 'Fdo', '', 'Bt', '', '3.5 ', 'DV, MOR'],
+                                                ['', '2', 'Do', '4', 'Fo', '', 'A', '', '', 'DV, PER'],
+                                                ['II', '3', 'DdS+', '99', "Ma.FC'-", '', 'H, Cg', '', '4.5', 'DR2, AB, PHR'],
+                                                ['II', '4', 'W+', '1', 'Ma.CFu', '2', 'H, (A), Cg', 'P', '5.5', 'FAB, AG, COP, PHR'],
+                                                ['IV', '5', 'Do', '6', 'Fo', '2', 'Cg', '', '', 'PER'],
+                                                ['', '6', 'W+', '1', 'Mp.FDo', '', '(H), Bt', 'P', '4.0', 'DV, AG, GHR'],
+                                                ['V', '7', 'Ddo', '99', 'FMao', '', 'A', '', '', ''],
+                                                ['', '8', 'Wo', '1', 'mp-', '', 'Ad', '', '1.0', 'MOR'],
+                                                ['VI', '9', 'Ddo', '33', 'Fu', '', '(Hd), Sx', '', '', 'ALOG, PHR'],
+                                                ['VII', '10', 'W+', '1', 'Mao', '2', 'H, Ls', '', '2.5', 'AG, DR, PHR'],
+                                                ['', '11', 'Wo', '1', 'FV-', '', 'An', '', '2.5', 'DV2'],
+                                                ['', '12', 'Do', '2', 'FVu', '', 'Fd', '', '', 'PER'],
+                                                ['VIII', '13', 'W+', '1', 'Mp.CF-', '', '(Hd), Fi, Cg', '', '4.5', 'FAB2, PHR'],
+                                                ['IX', '14', 'Wv', '1', 'C', '', 'Fi', '', '', 'PER'],
+                                                ['X', '15', 'D+', '11', 'Ma-', '', 'Hd, Sx', '', '4.0', 'FAB, PHR'],
+                                                ['', '16', 'Dv', '9', 'C', '2', 'Bl', '', '', ''],
+
+                                            ],
+                                            resp =
+                                                container = document.getElementById('example'),
+                                            hot = new Handsontable(container, {
+                                                data: data,
+                                                minSpareRows: 1,
+                                                colHeaders: ['Card', 'Resp.#', 'Location & DQ', 'Loc.#', 'Determinants & FQ', '2', 'Contents', 'Pop', 'Z-score', 'Spec.Score'],
+                                                contextMenu: true
+
+                                            });
+
+
+                                        function resp(response) {
+                                            document.write(response)
+                                            return response.json()
+                                        }
+
+                                        function handleSubmit(opts) {
+                                            fetch('/userHome/data',
+                                                {
+                                                    method: 'post',
+                                                    body: JSON.stringify(this.data)
+                                                }).then(ajaxLoad())
+
+                                        }
+
+                                        function ajaxLoad() {
+                                            $("#result").load("/trialUse/result");
+                                        }
+
+
+                                    </script>
+                                </div>
+                                <br>
+                                <button onclick="handleSubmit()" class="btn btn-lg btn-primary ">Analyze</button>
+
+                                <p>
+                                    <span id=result></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+{% include "footer.html" %}

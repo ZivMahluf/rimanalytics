@@ -106,7 +106,8 @@ def userHome():
 def getData():
     try:
         Main.main(inputFormat.format(json.loads(request.data)))
-        return json.dumps((123)), 200, {'ContentType': 'application/json'}
+        return (jsonify(0))
+        #return json.dumps((123)), 200, {'ContentType': 'application/json'}
     except Exception as e:
         return render_template('error.html', error=e)
 
@@ -128,6 +129,28 @@ def result():
         cfg.CNTNR_SS = None
         cfg.CNTNR_C = None
         cfg.CNTNR_IR = None
+
+@app.route('/trialUse', methods=['GET', 'POST'])
+def trialUse():
+    return render_template('trialUse.html')
+
+@app.route('/trialUse/result', methods=['GET', 'POST'])
+def trialUseResult():
+    try:
+        return render_template('result.html',
+                               CNTNR_SS=cfg.CNTNR_SS,
+                               CNTNR_C = cfg.CNTNR_C,
+                               CNTNR_IR = cfg.CNTNR_IR)
+
+    except Exception as e:
+        return render_template('empty.html')
+
+    finally:
+        cfg.CNTNR_SS = None
+        cfg.CNTNR_C = None
+        cfg.CNTNR_IR = None
+
+
 
 @app.route('/logout')
 def logout():
