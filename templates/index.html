@@ -1,6 +1,13 @@
 {% include "header.html" %}
 
-<div class="container">
+<style type="text/css">
+    .carousel {
+    border-radius: 35px 35px 35px 35px;
+    overflow: hidden;
+}
+
+</style>
+<div class="carousel">
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators <li data-target="#carousel" data-slide-to="1"></li>
  -->
@@ -12,11 +19,14 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <img src="../static/img/img1.png" alt="Sequence of Scores" style="width:100%;">
+                <a  href = "/trialUse">
+                <img src="../static/img/img.png" alt="Sequence of Scores" style="width:100%;">
                 <div class="carousel-caption">
-                    <h3>Initial coded clients' data</h3>
-                    <p>Sequence of Scores</p>
+
+                    <h3>Страница с пробным набором данных</h3>
+                    <p>Нажмите здесь, чтобы проанализировать данные</p>
                 </div>
+                </a>
             </div>
 
 
